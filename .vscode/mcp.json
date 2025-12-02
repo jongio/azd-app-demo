@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "Azure Developer CLI - App Extension": {
+      "command": "azd",
+      "args": ["app", "mcp", "serve"]
+    }
+  }
+}
