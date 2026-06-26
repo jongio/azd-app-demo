@@ -7,7 +7,7 @@ metadata:
 
 reqs:
   - name: node
-    minVersion: 18.0.0
+    minVersion: 20.0.0
   - name: npm
     minVersion: 9.0.0
 
