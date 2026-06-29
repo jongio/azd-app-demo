@@ -111,8 +111,9 @@ The demo includes a test file (`api/server.test.js`) that:
 
 ### Coverage Reports
 
-`npm test` uses `c8` with Node's built-in test runner. Coverage is printed to
-the console and HTML reports are generated in `./api/coverage/`.
+When running with `--coverage`, reports are generated in:
+- `./test-results/` - Aggregated coverage reports
+- `./api/coverage/` - Service-specific coverage
 
 ## Demonstrating AI Debugging
 

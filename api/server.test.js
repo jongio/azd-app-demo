@@ -1,7 +1,5 @@
-const express = require('express');
-const assert = require('node:assert/strict');
-const { beforeEach, describe, test } = require('node:test');
 const request = require('supertest');
+const express = require('express');
 
 // Create a test app instance
 const createApp = () => {
@@ -80,7 +78,7 @@ describe('Items API', () => {
         .get('/items')
         .expect(200);
       
-      assert.deepStrictEqual(response.body, []);
+      expect(response.body).toEqual([]);
     });
   });
   
@@ -91,7 +89,7 @@ describe('Items API', () => {
         .send({ name: 'Widget', price: 10 })
         .expect(201);
       
-      assert.deepStrictEqual(response.body, {
+      expect(response.body).toMatchObject({
         id: 1,
         name: 'Widget',
         price: 10,
@@ -105,7 +103,7 @@ describe('Items API', () => {
         .send({ price: 10 })
         .expect(400);
       
-      assert.strictEqual(response.body.error, 'Name is required');
+      expect(response.body.error).toBe('Name is required');
     });
     
     test('returns 400 when price is missing', async () => {
@@ -114,7 +112,7 @@ describe('Items API', () => {
         .send({ name: 'Widget' })
         .expect(400);
       
-      assert.strictEqual(response.body.error, 'Valid price is required');
+      expect(response.body.error).toBe('Valid price is required');
     });
     
     test('returns 400 when price is not a number', async () => {
@@ -123,7 +121,7 @@ describe('Items API', () => {
         .send({ name: 'Widget', price: 'not-a-number' })
         .expect(400);
       
-      assert.strictEqual(response.body.error, 'Valid price is required');
+      expect(response.body.error).toBe('Valid price is required');
     });
     
     test('calculates tax correctly', async () => {
@@ -132,7 +130,7 @@ describe('Items API', () => {
         .send({ name: 'Expensive Widget', price: 100 })
         .expect(201);
       
-      assert.ok(Math.abs(response.body.total - 110) < 0.005); // 100 * 1.1 (floating point safe)
+      expect(response.body.total).toBeCloseTo(110, 2); // 100 * 1.1 (floating point safe)
     });
   });
   
@@ -142,7 +140,7 @@ describe('Items API', () => {
         .get('/items/999')
         .expect(404);
       
-      assert.strictEqual(response.body.error, 'Item not found');
+      expect(response.body.error).toBe('Item not found');
     });
     
     test('returns item by id', async () => {
@@ -155,7 +153,7 @@ describe('Items API', () => {
         .get('/items/1')
         .expect(200);
       
-      assert.strictEqual(response.body.name, 'Test Item');
+      expect(response.body.name).toBe('Test Item');
     });
   });
   

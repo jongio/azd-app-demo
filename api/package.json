@@ -6,18 +6,25 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "test": "c8 --reporter=text --reporter=html node --test",
-    "test:unit": "c8 --reporter=text --reporter=html node --test server.test.js",
-    "test:integration": "node -e \"console.log('No integration tests configured')\""
+    "test": "jest --coverage",
+    "test:unit": "jest --coverage --testPathPattern=test",
+    "test:integration": "jest --testPathPattern=integration"
   },
   "dependencies": {
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "c8": "^11.0.0",
+    "jest": "^30.4.2",
     "supertest": "^7.2.2"
   },
-  "engines": {
-    "node": ">=20"
+  "jest": {
+    "testEnvironment": "node",
+    "coverageReporters": ["text", "cobertura", "html"],
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/coverage/**"
+    ]
   }
 }
