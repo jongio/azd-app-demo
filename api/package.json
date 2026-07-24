@@ -19,7 +19,11 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "coverageReporters": ["text", "cobertura", "html"],
+    "coverageReporters": [
+      "text",
+      "cobertura",
+      "html"
+    ],
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "**/*.js",
