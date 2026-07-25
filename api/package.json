@@ -7,8 +7,8 @@
     "start": "node server.js",
     "dev": "node server.js",
     "test": "jest --coverage",
-    "test:unit": "jest --coverage --testPathPattern=test",
-    "test:integration": "jest --testPathPattern=integration"
+    "test:unit": "jest --coverage --testPathPatterns=test",
+    "test:integration": "jest --testPathPatterns=integration"
   },
   "dependencies": {
     "express": "^5.2.1"
@@ -16,6 +16,12 @@
   "devDependencies": {
     "jest": "^30.4.2",
     "supertest": "^7.2.2"
+  },
+  "overrides": {
+    "brace-expansion": "^5.0.8",
+    "glob": "^13.0.6",
+    "minimatch": "^10.2.5",
+    "test-exclude": "^8.0.0"
   },
   "jest": {
     "testEnvironment": "node",
