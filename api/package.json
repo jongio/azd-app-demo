@@ -7,8 +7,8 @@
     "start": "node server.js",
     "dev": "node server.js",
     "test": "jest --coverage",
-    "test:unit": "jest --coverage --testPathPattern=test",
-    "test:integration": "jest --testPathPattern=integration"
+    "test:unit": "jest --coverage --testPathPatterns=test",
+    "test:integration": "jest --testPathPatterns=integration --passWithNoTests"
   },
   "dependencies": {
     "express": "^5.2.1"
